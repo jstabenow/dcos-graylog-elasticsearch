@@ -1,0 +1,51 @@
+{
+  "id": "/graylog",
+  "cmd": "export GRAYLOG_WEB_LISTEN_URI=http://$HOST:$PORT0/ && \\ \nexport GRAYLOG_REST_LISTEN_URI=http://$HOST:$PORT1/ &&  \\\nexport GRAYLOG_ELASTICSEARCH_TRANSPORT_TCP_PORT=$PORT2 && \\\n/docker-entrypoint.sh graylog",
+  "cpus": 1,
+  "mem": 1024,
+  "disk": 0,
+  "instances": 1,
+  "container": {
+    "type": "DOCKER",
+    "volumes": [],
+    "docker": {
+      "image": "graylog2/server:latest",
+      "network": "HOST"
+    }
+  },
+  "env": {
+    "GRAYLOG_ELASTICSEARCH_CLUSTER_NAME": "mesos-ha",
+    "GRAYLOG_MONGODB_URI": "mongodb://mongodb.marathon.mesos/graylog",
+    "GRAYLOG_ELASTICSEARCH_DISCOVERY_ZEN_PING_UNICAST_HOSTS": "elasticsearch-executor.elasticsearch.mesos:1026",
+    "GRAYLOG_SERVER_JAVA_OPTS": "-Xms256m -Xmx512m -XX:NewRatio=1 -XX:MaxMetaspaceSize=256m -server -XX:+ResizeTLAB -XX:+UseConcMarkSweepGC -XX:+CMSConcurrentMTEnabled -XX:+CMSClassUnloadingEnabled -XX:+UseParNewGC -XX:-OmitStackTraceInFastThrow"
+  },
+  "healthChecks": [
+    {
+      "path": "/",
+      "protocol": "HTTP",
+      "portIndex": 0,
+      "gracePeriodSeconds": 300,
+      "intervalSeconds": 60,
+      "timeoutSeconds": 20,
+      "maxConsecutiveFailures": 3,
+      "ignoreHttp1xx": false
+    }
+  ],
+  "portDefinitions": [
+    {
+      "port": 0,
+      "protocol": "tcp",
+      "name": "graylog-web-port"
+    },
+    {
+      "port": 0,
+      "protocol": "tcp",
+      "name": "graylog-rest-port"
+    },
+    {
+      "port": 0,
+      "protocol": "tcp",
+      "name": "graylog-elasticsearch-transport-port"
+    }
+  ]
+}
