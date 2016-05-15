@@ -1,6 +1,14 @@
 # DCOS-Graylog-Elasticsearch
 A quick howto about how connect a [Graylog-Server](https://github.com/Graylog2/graylog2-server) with the [Elasticsearch-Mesos](https://github.com/mesos/elasticsearch) Framework on [DC/OS](https://dcos.io/).
 
+**Update:**
+```sh
+$ dcos package repo add universe-jstabenow https://github.com/jstabenow/universe/archive/version-2.x.zip
+$ dcos package install elasticsearch
+$ dcos package install mongodb
+$ dcos package install graylog
+````
+
 ## Todos
 1. Install the Elasticsearch-Mesos Framework
 2. Start MongoDB and Graylog
