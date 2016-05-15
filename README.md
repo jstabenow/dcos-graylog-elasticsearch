@@ -8,7 +8,7 @@ A quick howto about how connect a [Graylog-Server](https://github.com/Graylog2/g
 ## Install Elasticsearch 
 That is easy ;-) Open the "Universe" of the DC/OS-UI and choose "Elasticsearch" or use the DC/OS-CLI:
 ```sh
-dcos package install elasticsearch
+$ dcos package install elasticsearch
 ```
 
 **The default framework settings I am working with:**
