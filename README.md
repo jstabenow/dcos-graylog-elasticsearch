@@ -21,8 +21,8 @@ Next steps are requiring the DC/OS CLI:
 
 1. **Clone this repo**
   ```sh
-$ git clone https://github.com/jstabenow/graylog-elasticsearch-mesos
-$ cd graylog-elasticsearch-mesos/
+$ git clone https://github.com/jstabenow/dcos-graylog-elasticsearch
+$ cd dcos-graylog-elasticsearch/
 ```
 
 2. **Start MongoDB**
